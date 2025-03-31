@@ -1,4 +1,4 @@
-data = str(input("DIgite a data: "))
+data = str(input("Digite a data: "))
 agua = float(input("Quantos litros de água você consumiu hoje? (Aprox. em litros): "))
 kwh = float(input("Quantos kWh de energia elétrica você consumiu hoje?: "))
 kg_lixo = float(input("Quantos kg de resíduos não recicláveis você gerou hoje?: "))
