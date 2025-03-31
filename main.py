@@ -18,9 +18,6 @@ for meio in meios_transporte:
   if resposta != 'S' and resposta != 'N':
        print("Resposta inválida. Por favor, responda com 'S' ou 'N'.")
        resposta = input(f"Você usou {meio} hoje? (S/N): ")
-       if resposta != 'S' and resposta != 'N':
-           print("Com a devida vênia, solicito encarecidamente que cesse com tal comportamento de considerável limitação cognitiva e, em virtude da simplicidade intrínseca da questão em pauta, peço que forneça uma resposta objetiva, utilizando exclusivamente as letras 'S' ou 'N', conforme o caso, a fim de facilitar a continuidade de nossa comunicação de maneira clara e eficiente..")
-           resposta = input(f"Você usou {meio} hoje? (S/N): ")
   resposta_transporte.append(resposta)
 
 if resposta_transporte[0] == 'S' or resposta_transporte[1] == 'S' or resposta_transporte[2] == 'S' or resposta_transporte[4] == 'S':
