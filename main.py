@@ -13,11 +13,13 @@ meios_transporte = [
 ]
 resposta_transporte = []
 
+
 for meio in meios_transporte:
   resposta = input(f"Você usou {meio} hoje? (S/N): ").strip().upper()    
   if resposta != 'S' and resposta != 'N':
-       print("Resposta inválida. Por favor, responda com 'S' ou 'N'.")
-       resposta = input(f"Você usou {meio} hoje? (S/N): ")
+       while resposta != 'S' and resposta != 'N':
+          print("Resposta inválida. Por favor, responda com 'S' ou 'N'.")
+          resposta = input(f"Você usou {meio} hoje? (S/N): ").strip().upper() 
   resposta_transporte.append(resposta)
 
 if resposta_transporte[0] == 'S' or resposta_transporte[1] == 'S' or resposta_transporte[2] == 'S' or resposta_transporte[4] == 'S':
