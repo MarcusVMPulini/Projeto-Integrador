@@ -1,3 +1,21 @@
+import mysql.connector
+import os
+
+conexao = mysql.connector.connect(
+    host="BD-ACD", 
+    user="BD180225124", 
+    password="Vzbbv5", 
+    database="BD180225124" 
+)
+
+cursor = conexao.cursor()
+
+if conexao.is_connected():
+    print("Conexão bem-sucedida ao banco de dados!")
+
+
+
+
 data = str(input("Digite a data: "))
 agua = float(input("Quantos litros de água você consumiu hoje? (Aprox. em litros): "))
 kwh = float(input("Quantos kWh de energia elétrica você consumiu hoje?: "))
@@ -56,12 +74,14 @@ else:
     consumo_porcentagem_reciclados = "Baixa Sustentabilidade"
 
 
+meios_transporte_str = ",".join(resposta_transporte)
 
-print(f"""\n\n---------RESULTADOS---------\n
-Consumo de água: {consumo_agua}
-Consumo de energia: {consumo_energia}
-Geração de Resíduos Não Recicláveis: {consumo_porcentagem_reciclados}
-Uso de Transporte: {uso_transporte}
-""")
+sql = "INSERT INTO monitoramento_sustentabilidade (data_monitoramento, consumo_agua_litros, consumo_energia_kwh, residuos_nao_reciclaveis_kg, porcentagem_residuos_reciclados, meio_transporte_utilizado) VALUES (%s, %s, %s, %s, %s, %s)"
+valores = (data, agua, kwh, kg_lixo, lixo, meios_transporte_str)
+cursor.execute(sql, valores)
+conexao.commit()
+print("Dados inseridos com sucesso!")
 
 
+cursor.close()
+conexao.close()
