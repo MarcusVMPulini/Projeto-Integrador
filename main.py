@@ -16,7 +16,7 @@ if conexao.is_connected():
 
 
 
-data = str(input("Digite a data: "))
+data = str(input("Digite a data(AAAA/MM/DD): "))
 agua = float(input("Quantos litros de água você consumiu hoje? (Aprox. em litros): "))
 kwh = float(input("Quantos kWh de energia elétrica você consumiu hoje?: "))
 kg_lixo = float(input("Quantos kg de resíduos não recicláveis você gerou hoje?: "))
@@ -82,6 +82,11 @@ cursor.execute(sql, valores)
 conexao.commit()
 print("Dados inseridos com sucesso!")
 
-
+print(f"""\n\n---------RESULTADOS---------\n
+Consumo de água: {consumo_agua}
+Consumo de energia: {consumo_energia}
+Geração de Resíduos Não Recicláveis: {consumo_porcentagem_reciclados}
+Uso de Transporte: {uso_transporte}
+""")
 cursor.close()
 conexao.close()
