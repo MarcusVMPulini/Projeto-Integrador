@@ -1,17 +1,7 @@
+use BD180225124;
+show tables;
 
 CREATE TABLE monitoramento_sustentabilidade (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    data_monitoramento DATE NOT NULL,
-    consumo_agua_litros DECIMAL(5,2) NOT NULL,
-    consumo_energia_kwh DECIMAL(5,2) NOT NULL,
-    residuos_nao_reciclaveis_kg DECIMAL(5,2) NOT NULL,
-    porcentagem_residuos_reciclados DECIMAL(5,2) NOT NULL,
-    meio_transporte_utilizado VARCHAR(100) NOT NULL);
-    SHOW COLUMNS FROM monitoramento_sustentabilidade;
-    
-INSERT INTO monitoramento_sustentabilidade ( 
-data_monitoramento,consumo_agua_litros,consumo_energia_kwh,residuos_nao_reciclaveis_kg,
-porcentagem_residuos_reciclados,meio_transCREATE TABLE monitoramento_sustentabilidade (
     id INT AUTO_INCREMENT PRIMARY KEY,
     data_monitoramento DATE NOT NULL,
     consumo_agua_litros DECIMAL(5,2) NOT NULL,
@@ -39,8 +29,3 @@ where id = 1;
 SELECT * FROM monitoramento_sustentabilidade;
 
 DROP TABLE monitoramento_sustentabilidade;
-
-	porte_utilizado)
-VALUES(2025-04-25, 12, 60, 8, 0, 's,s,s,s,s,s');
-
-
