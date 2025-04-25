@@ -88,10 +88,56 @@ Consumo de energia: {consumo_energia}
 Geração de Resíduos Não Recicláveis: {consumo_porcentagem_reciclados}
 Uso de Transporte: {uso_transporte}
 """)
-pesquisa = int(input("1 - Deseja visualizar uma data especifica\n2 - Encerrar programa"))
+pesquisa = int(input("1 - Deseja visualizar uma data especifica\n2 - Encerrar programa\n"))
 
 if pesquisa == 1:
-   qualdata = int(input("Qual a data deseja verificar?(AAAA/MM/DD) "))
+   qualdata = input("Qual a data deseja verificar?(AAAA/MM/DD) ")
+   cursor.execute("Select * from monitoramento_sustentabilidade where data_monitoramento = %s", (qualdata,))
+   resultado = cursor.fetchall()
+   if not resultado:
+        print(f"\nNenhum registro encontrado para a data {qualdata}.")
+   else:
+    for linha in resultado:
+        if linha[6][0] == 'S' or linha[6][1] == 'S' or linha[6][2] == 'S' or linha[6][4] == 'S':
+            if linha[6][3] == 'S' or linha[6][5] == 'S':
+                uso_transporte = "Média Sustentabilidade"
+            else:
+                uso_transporte = "Alta Sustentabilidade"
+        elif linha[6][5] == 'S':
+            uso_transporte = "Media Sustentabilidade"
+        else:
+            uso_transporte = "Baixa Sustentabilidade"
+        if linha[2] < 150: 
+            consumo_agua = "Alta Sustentabilidade"
+        elif linha[2] < 200:
+            consumo_agua= "Moderada Sustentabilidade"
+        else:
+            consumo_agua = "Baixa Sustentabilidade"
+
+        if linha[3] < 5: 
+            consumo_energia = "Alta Sustentabilidade"
+        elif linha[3] <= 10:
+            consumo_energia = "Moderada Sustentabilidade"
+        else:
+            consumo_energia = "Baixa Sustentabilidade"
+
+
+        if linha[5] > 50: 
+            consumo_porcentagem_reciclados = "Alta Sustentabilidade"
+        elif linha[5] <= 50 and lixo >=20 :
+            consumo_porcentagem_reciclados = "Moderada Sustentabilidade"
+        else:
+            consumo_porcentagem_reciclados = "Baixa Sustentabilidade"
+        
+        print(f"""\n\n---------RESULTADOS DO DIA {qualdata}---------\n
+        Consumo de água: {consumo_agua}
+        Consumo de energia: {consumo_energia}
+        Geração de Resíduos Não Recicláveis: {consumo_porcentagem_reciclados}
+        Uso de Transporte: {uso_transporte}
+        """)
+
+elif pesquisa == 2:
+   print("Programa encerrado")
 
 
 
