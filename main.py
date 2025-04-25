@@ -88,5 +88,12 @@ Consumo de energia: {consumo_energia}
 Geração de Resíduos Não Recicláveis: {consumo_porcentagem_reciclados}
 Uso de Transporte: {uso_transporte}
 """)
+pesquisa = int(input("1 - Deseja visualizar uma data especifica\n2 - Encerrar programa"))
+
+if pesquisa == 1:
+   qualdata = int(input("Qual a data deseja verificar?(AAAA/MM/DD) "))
+
+
+
 cursor.close()
 conexao.close()
