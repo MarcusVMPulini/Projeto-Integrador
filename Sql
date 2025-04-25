@@ -1,0 +1,35 @@
+use BD09042511;
+show databases;
+show tables;
+
+CREATE TABLE monitoramento_sustentabilidade (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    data_monitoramento DATE NOT NULL,
+    consumo_agua_litros DECIMAL(5,2) NOT NULL,
+    consumo_energia_kwh DECIMAL(5,2) NOT NULL,
+    residuos_nao_reciclaveis_kg DECIMAL(5,2) NOT NULL,
+    porcentagem_residuos_reciclados DECIMAL(5,2) NOT NULL,
+    meio_transporte_utilizado VARCHAR(100) NOT NULL);
+    SHOW COLUMNS FROM monitoramento_sustentabilidade;
+    
+INSERT INTO monitoramento_sustentabilidade ( 
+data_monitoramento,consumo_agua_litros,consumo_energia_kwh,residuos_nao_reciclaveis_kg,
+porcentagem_residuos_reciclados,meio_transporte_utilizado)
+VALUES();
+
+SELECT * FROM monitoramento_sustentabilidade;
+
+SELECT SUM(consumo_agua_litros) / COUNT(*) AS media_agua
+FROM monitoramento_sustentabilidade;
+    
+SELECT SUM(consumo_energia_kwh) / COUNT(*) AS media_energia
+FROM monitoramento_sustentabilidade;
+    
+SELECT   SUM(residuos_nao_reciclaveis_kg) / COUNT(*) AS media_residuos
+FROM monitoramento_sustentabilidade;
+    
+SELECT  SUM(porcentagem_residuos_reciclados) / COUNT(*) AS media_reciclados
+FROM monitoramento_sustentabilidade;
+
+SELECT meio_transporte_utilizado / COUNT(*) AS vezes_utilizado
+FROM monitoramento_sustentabilidade;
