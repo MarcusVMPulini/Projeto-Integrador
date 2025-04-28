@@ -1,5 +1,3 @@
-use BD180225124;
-show tables;
 
 CREATE TABLE monitoramento_sustentabilidade (
     id INT AUTO_INCREMENT PRIMARY KEY,
